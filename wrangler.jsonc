@@ -4,6 +4,10 @@
 	"pages_build_output_dir": ".vercel/output/static",
 	"compatibility_date": "2026-07-23",
 	"compatibility_flags": ["nodejs_compat"],
+	"assets": {
+		"directory": ".open-next/assets", // Memisahkan aset statis agar hemat request
+		"binding": "ASSETS",
+	},
 
 	// --- Tambahkan Binding D1 di bawah ini ---
 	"d1_databases": [
