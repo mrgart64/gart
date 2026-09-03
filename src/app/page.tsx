@@ -5,7 +5,13 @@ import { D1Database } from '@cloudflare/workers-types';
 
 import Navbar from '@/components/Navbar';
 import HeroSection from './components/HeroSection';
-import TrafficSection from './components/TrafficSection';
+import dynamic from 'next/dynamic';
+
+// TAMBAHKAN BARIS INI SEBAGAI PENGGANTI:
+const TrafficSection = dynamic(() => import('./components/TrafficSection'), {
+  ssr: false, // Memaksa komponen hanya dimuat 100% di browser client
+  loading: () => <div className="h-36 w-full animate-pulse bg-white/5 rounded-2xl" /> // Tampilan loading sementara
+});
 import ServicesSection from './components/ServicesSection';
 import FeaturesSection from './components/FeaturesSection';
 import EducationSection from './components/EducationSection';
