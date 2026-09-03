@@ -1,0 +1,16 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "business",
+	"pages_build_output_dir": ".vercel/output/static",
+	"compatibility_date": "2026-07-23",
+	"compatibility_flags": ["nodejs_compat"],
+
+	// --- Tambahkan Binding D1 di bawah ini ---
+	"d1_databases": [
+		{
+			"binding": "DB", // Nama variabel yang bakal dipanggil di Next.js
+			"database_name": "analytics_db", // Sesuaikan nama DB di Cloudflare
+			"database_id": "39c72e5a-67fe-4038-b6b9-c3caa85a0907", // Paste ID Database kamu di sini
+		},
+	],
+}
