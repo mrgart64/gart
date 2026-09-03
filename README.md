@@ -1,8 +1,10 @@
+## Gart - Hall of Fame
+
+Project ini adalah website portofolio yang menampilkanproject apa saja yang dibuat dan prestasi.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
-
-First, run the development server:
 
 ```bash
 npm run dev

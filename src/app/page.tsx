@@ -1,69 +1,114 @@
-import Image from "next/image";
+import React from 'react';
+import { getRequestContext } from '@cloudflare/next-on-pages';
+import { D1Database } from '@cloudflare/workers-types';
 
-export default function Home() {
+import Navbar from '@/components/Navbar';
+import HeroSection from './components/HeroSection';
+import TrafficSection from './components/TrafficSection';
+import ServicesSection from './components/ServicesSection';
+import FeaturesSection from './components/FeaturesSection';
+import EducationSection from './components/EducationSection';
+import PortfolioSection from './components/PortfolioSection';
+import PricingSection from './components/PricingSection';
+import FaqSection from './components/FaqSection';
+import ContactSection from './components/ContactSection';
+import Footer from './components/Footer';
+import CloudAdapter from '@/utils/CloudAdapter';
+import StarField from '@/components/StarField';
+import AchievementSection from './components/AchievementSection';
+export const runtime = 'edge';
+
+// Interface untuk tipe data outputnya
+interface TrafficData {
+  label: string;
+  value: number;
+}
+
+// Interface internal untuk hasil query SQL
+interface RawQueryResult {
+  tanggal: string;
+  total: number;
+}
+
+async function getTrafficData(): Promise<TrafficData[]> {
+  const query = `
+  SELECT 
+    date(created_at, '+8 hours') AS tanggal,
+    COUNT(*) AS total
+  FROM gart_basis64_com
+  WHERE created_at >= datetime('now', '+8 hours', '-6 days', 'start of day', '-8 hours')
+  GROUP BY tanggal;
+`;
+  // 1. Fetch data via CloudAdapter (Otomatis D1 di Production, SQLite di Lokal)
+  const results = await CloudAdapter.D1<RawQueryResult>(query) || [];
+
+  console.log(results)
+
+  // 2. Map data DB ke Object JavaScript { "YYYY-MM-DD": total }
+  const dataMap = new Map<string, number>();
+  results.forEach((row) => dataMap.set(row.tanggal, row.total));
+
+  // 3. Generate Array TrafficData (H-6 sampai Hari Ini)
+  const trafficData: TrafficData[] = [];
+  const now = new Date();
+
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(now);
+    d.setDate(d.getDate() - i);
+
+    // Format ISO untuk pencocokan key Map: "YYYY-MM-DD"
+    const dateKey = d.toISOString().split('T')[0];
+
+    // Format label untuk tampilan UI: "DD MMM" (Contoh: "04 Jan", "23 Jul")
+    const label = d.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'short',
+    });
+
+    trafficData.push({
+      label: label, // e.g. "04 Jan"
+      value: dataMap.get(dateKey) || 0, // Nilai total dari D1 (default 0 jika tidak ada data)
+    });
+  }
+
+  return trafficData;
+}
+
+async function putTraffic() {
+  // Insert 1 row dengan waktu saat ini
+  await CloudAdapter.D1("INSERT INTO gart_basis64_com (created_at) VALUES (datetime('now'));");
+}
+
+export default async function TestingPage() {
+  await putTraffic();
+  const analyticsData = await getTrafficData();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <StarField />
+      <Navbar />
+
+      <div className='max-w-7xl mx-auto'>
+        {/* <PortfolioGalleryModal isOpen={true} /> */}
+        {/* <ImageViewerModal isOpen={true}/> */}
+        <div className="justify-center">
+
+          {/* Kartu Utama */}
+          <HeroSection trafficData={analyticsData} />
+          {/* <ServicesSection /> */}
+          <PortfolioSection />
+          <FeaturesSection />
+          <EducationSection />
+          <AchievementSection />
+          <TrafficSection trafficData={analyticsData} />
+
+          <ContactSection />
+
+          <Footer />
+
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </>
+
   );
 }
