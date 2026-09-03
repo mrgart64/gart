@@ -14,5 +14,7 @@
 			"database_name": "analytics_db",
 			"database_id": "39c72e5a-67fe-4038-b6b9-c3caa85a0907"
 		}
-	]
+	],
+	"cache": { "enabled": true },
+	"version_metadata": { "binding": "CF_VERSION_METADATA" }
 }

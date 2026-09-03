@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import React from 'react';
 import { D1Database } from '@cloudflare/workers-types';
 
@@ -15,7 +17,6 @@ import Footer from './components/Footer';
 import CloudAdapter from '@/utils/CloudAdapter';
 import StarField from '@/components/StarField';
 import AchievementSection from './components/AchievementSection';
-export const runtime = 'edge';
 
 // Interface untuk tipe data outputnya
 interface TrafficData {
