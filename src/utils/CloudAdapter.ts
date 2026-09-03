@@ -8,7 +8,6 @@
  * - mysql2/promise
  */
 
-import { getRequestContext } from "@cloudflare/next-on-pages";
 import { D1Database } from "@cloudflare/workers-types";
 import mysql from "mysql2/promise";
 
@@ -27,8 +26,7 @@ export default class CloudAdapter {
 		try {
 			// Get Cloudflare D1 DB context
 
-			const ctx = getRequestContext();
-			const env = ctx?.env as { DB?: D1Database };
+			const env = process.env;
 
 			// Fetching data to Cloudflare D1
 			if (env?.DB) {
