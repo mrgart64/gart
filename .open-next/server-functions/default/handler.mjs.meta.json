@@ -3885,7 +3885,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/node_modules/next/dist/server/load-manifest.external.js": {
-      "bytes": 28380,
+      "bytes": 28381,
       "imports": [
         {
           "path": "path",
@@ -6786,7 +6786,7 @@
       "format": "esm"
     },
     ".open-next/server-functions/default/index.mjs": {
-      "bytes": 88681,
+      "bytes": 88682,
       "imports": [
         {
           "path": "node:module",

@@ -26,7 +26,6 @@
 		"react-dom": "^19.2.8",
 		"react-server-dom-webpack": "^19.2.8",
 		"sass": "^1.101.0",
-		"vinext": "^1.0.0-beta.9",
 		"wrangler": "^4.128.0"
 	},
 	"devDependencies": {
