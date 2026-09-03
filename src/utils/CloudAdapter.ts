@@ -28,6 +28,13 @@ export default class CloudAdapter {
 
 			const env = process.env;
 
+			// Wajib validasi agar TypeScript tahu objek DB benar-benar ada
+			if (!env.DB || typeof env.DB === "string") {
+				throw new Error(
+					"Database D1 tidak terikat atau salah konfigurasi.",
+				);
+			}
+
 			// Fetching data to Cloudflare D1
 			if (env?.DB) {
 				const stmt = env.DB.prepare(query);

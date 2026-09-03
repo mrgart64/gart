@@ -6,6 +6,15 @@ import { Trophy, Award, GraduationCap, Calendar, MapPin, ArrowUpRight, X } from 
 import PortfolioGalleryModal from './PortfolioGalleryModal';
 import GalleryModal from './GalleryModal';
 
+
+// 1. Definisikan interface item galeri yang sesuai dengan kebutuhan GalleryModal
+interface GalleryItem {
+    title: string;
+    subtitle: string;
+    image: string;
+    siteUrl: string;
+}
+
 interface Achievement {
     title: string;
     event: string;
@@ -14,7 +23,7 @@ interface Achievement {
     location?: string;
     description: string;
     thumbnail: string;
-    images?: object; // Kumpulan foto/sertifikat buat modal
+    images?: GalleryItem[]; // Kumpulan foto/sertifikat buat modal
 }
 
 interface EducationGroup {
@@ -132,8 +141,7 @@ export default function AchievementSection() {
             <GalleryModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
-                galleryItems={selectedAchievement ? selectedAchievement.images : []}
-            />
+                galleryItems={selectedAchievement?.images || []} />
             <section
                 id="achievements"
                 className="relative max-w-7xl mx-4 xl:mx-auto p-6 md:p-12 bg-white/5 backdrop-blur-[1px] border border-white/10 rounded-3xl overflow-hidden shadow-xl shadow-red-500/5 mt-6"

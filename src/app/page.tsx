@@ -1,5 +1,4 @@
 import React from 'react';
-import { getRequestContext } from '@cloudflare/next-on-pages';
 import { D1Database } from '@cloudflare/workers-types';
 
 import Navbar from '@/components/Navbar';
