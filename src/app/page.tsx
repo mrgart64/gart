@@ -1,4 +1,4 @@
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 import React from 'react';
 import { D1Database } from '@cloudflare/workers-types';

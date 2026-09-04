@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-	/* konfigurasi standar Anda di sini */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+	output: "export",
+	// Opsional: jika menggunakan Next Image, matikan optimasi gambar default
+	images: {
+		unoptimized: true
+	}
 };
 
 export default nextConfig;
