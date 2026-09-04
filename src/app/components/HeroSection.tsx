@@ -15,22 +15,22 @@ interface HeroSectionProps {
 
 export default function HeroSection({ trafficData }: HeroSectionProps) {
   // Ambil data Hari Ini (H-0) dan Kemarin (H-1) berdasarkan properti .value
-  const todayValue = trafficData[trafficData.length - 1]?.value || 0;
-  const yesterdayValue = trafficData[trafficData.length - 2]?.value || 0;
+  // const todayValue = trafficData[trafficData.length - 1]?.value || 0;
+  // const yesterdayValue = trafficData[trafficData.length - 2]?.value || 0;
 
   // 1. Cek apakah ada penurunan (minus)
-  const isMinus = todayValue < yesterdayValue;
+  // const isMinus = todayValue < yesterdayValue;
 
-  // 2. Hitung selisih angka absolut
-  const diff = Math.abs(todayValue - yesterdayValue);
+  // // 2. Hitung selisih angka absolut
+  // const diff = Math.abs(todayValue - yesterdayValue);
 
-  // 3. Kalkulasi Persentase Pertumbuhan
-  let growthPercentage = "0";
-  if (yesterdayValue === 0) {
-    growthPercentage = todayValue > 0 ? ((diff / 1) * 100).toFixed(0) : "0";
-  } else {
-    growthPercentage = ((diff / yesterdayValue) * 100).toFixed(0);
-  }
+  // // 3. Kalkulasi Persentase Pertumbuhan
+  // let growthPercentage = "0";
+  // if (yesterdayValue === 0) {
+  //   growthPercentage = todayValue > 0 ? ((diff / 1) * 100).toFixed(0) : "0";
+  // } else {
+  //   growthPercentage = ((diff / yesterdayValue) * 100).toFixed(0);
+  // }
 
   return (
     <section id="profile" className="relative flex flex-col items-center justify-center mt-4 pt-4 xl:pt-4 pb-12 overflow-hidden">
@@ -125,19 +125,19 @@ export default function HeroSection({ trafficData }: HeroSectionProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10 w-full text-center"
+          className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10 w-full text-center hidden"
         >
-          <div>
+          {/* <div>
             <p className="text-2xl sm:text-3xl font-bold text-white">{`${isMinus ? '-' : '+'}${growthPercentage}`}%</p>
-            <p className="text-xs text-gray-300 mt-1">Traffic growth</p>
-          </div>
+            <p className="text-xs text-gray-300 mt-1">Traffic </p>
+          </div> */}
           <div>
-            <p className="text-2xl sm:text-3xl font-bold text-white">2</p>
+            <p className="text-2xl sm:text-3xl font-bold text-white">3</p>
             <p className="text-xs text-gray-300 mt-1">Website dibuat</p>
           </div>
           <div>
-            <p className="text-2xl sm:text-3xl font-bold text-white">{todayValue}</p>
-            <p className="text-xs text-gray-300 mt-1">Pengunjung hari ini</p>
+            <p className="text-2xl sm:text-3xl font-bold text-white">{"5 tahun"}</p>
+            <p className="text-xs text-gray-300 mt-1">Pengalaman coding</p>
           </div>
         </motion.div>
 

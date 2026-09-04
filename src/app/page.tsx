@@ -76,12 +76,12 @@ async function getTrafficData(): Promise<TrafficData[]> {
 
 async function putTraffic() {
   // Insert 1 row dengan waktu saat ini
-  await CloudAdapter.D1("INSERT INTO gart_basis64_com (created_at) VALUES (datetime('now'));");
+  // await CloudAdapter.D1("INSERT INTO gart_basis64_com (created_at) VALUES (datetime('now'));");
 }
 
 export default async function TestingPage() {
-  await putTraffic();
-  const analyticsData = await getTrafficData();
+  // await putTraffic();
+  // const analyticsData = await getTrafficData();
 
   return (
     <>
@@ -94,7 +94,7 @@ export default async function TestingPage() {
         <div className="justify-center">
 
           {/* Kartu Utama */}
-          <HeroSection trafficData={analyticsData} />
+          <HeroSection trafficData={[]} />
           {/* <ServicesSection /> */}
           <PortfolioSection />
           <FeaturesSection />

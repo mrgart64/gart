@@ -546,16 +546,7 @@ function applyModuleFactoryName(factory) {
 async function externalImport(id) {
     let raw;
     try {
-        switch (id) {
-  case "next/dist/compiled/@vercel/og/index.node.js":
-    raw = await import("next/dist/compiled/@vercel/og/index.edge.js");
-    break;
-  case "better-sqlite3-90e2652d1716b047":
-    raw = await import("better-sqlite3");
-    break;
-  default:
-    raw = await import(id);
-};
+        raw = await import(id);
     } catch (err) {
         // TODO(alexkirsz) This can happen when a client-side module tries to load
         // an external module we don't provide a shim for (e.g. querystring, url).
@@ -674,7 +665,7 @@ function loadRuntimeChunkPath(sourcePath, chunkPath) {
     }
     try {
         const resolved = path.resolve(RUNTIME_ROOT, chunkPath);
-        const chunkModules = requireChunk(chunkPath);
+        const chunkModules = require(resolved);
         installCompressedModuleFactories(chunkModules, 0, moduleFactories);
         loadedChunks.add(chunkPath);
     } catch (cause) {
@@ -703,7 +694,7 @@ function loadChunkAsync(chunkData) {
             const resolved = path.resolve(RUNTIME_ROOT, chunkPath);
             // TODO: consider switching to `import()` to enable concurrent chunk loading and async file io
             // However this is incompatible with hot reloading (since `import` doesn't use the require cache)
-            const chunkModules = requireChunk(chunkPath);
+            const chunkModules = require(resolved);
             installCompressedModuleFactories(chunkModules, 0, moduleFactories);
             entry = loadedChunk;
         } catch (cause) {
@@ -814,43 +805,3 @@ module.exports = (sourcePath)=>({
 
 
 //# sourceMappingURL=%5Bturbopack%5D_runtime.js.map
-
-  function requireChunk(chunkPath) {
-    switch(chunkPath) {
-      case "server/chunks/ssr/[root-of-the-server]__02ef9st._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/[root-of-the-server]__02ef9st._.js");
-      case "server/chunks/ssr/[root-of-the-server]__0ew55hb._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/[root-of-the-server]__0ew55hb._.js");
-      case "server/chunks/ssr/[root-of-the-server]__0xpcv9w._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/[root-of-the-server]__0xpcv9w._.js");
-      case "server/chunks/ssr/[root-of-the-server]__0y_e9do._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/[root-of-the-server]__0y_e9do._.js");
-      case "server/chunks/ssr/[root-of-the-server]__1lkwx6a._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/[root-of-the-server]__1lkwx6a._.js");
-      case "server/chunks/ssr/[turbopack]_runtime.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/[turbopack]_runtime.js");
-      case "server/chunks/ssr/_next-internal_server_app__not-found_page_actions_0pt47yr.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/_next-internal_server_app__not-found_page_actions_0pt47yr.js");
-      case "server/chunks/ssr/node_modules_01xbj_9._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/node_modules_01xbj_9._.js");
-      case "server/chunks/ssr/node_modules_next_dist_1--45f-._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/node_modules_next_dist_1--45f-._.js");
-      case "server/chunks/ssr/node_modules_next_dist_1n3w9lb._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/node_modules_next_dist_1n3w9lb._.js");
-      case "server/chunks/ssr/node_modules_next_dist_client_components_0wpq8j3._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/node_modules_next_dist_client_components_0wpq8j3._.js");
-      case "server/chunks/ssr/node_modules_next_dist_client_components_builtin_forbidden_0symwr9.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/node_modules_next_dist_client_components_builtin_forbidden_0symwr9.js");
-      case "server/chunks/ssr/node_modules_next_dist_client_components_builtin_unauthorized_0l_sp0x.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/node_modules_next_dist_client_components_builtin_unauthorized_0l_sp0x.js");
-      case "server/chunks/ssr/[root-of-the-server]__1f2jx51._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/[root-of-the-server]__1f2jx51._.js");
-      case "server/chunks/ssr/[root-of-the-server]__1uw42cz._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/[root-of-the-server]__1uw42cz._.js");
-      case "server/chunks/ssr/_next-internal_server_app__global-error_page_actions_0zi5s8-.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/_next-internal_server_app__global-error_page_actions_0zi5s8-.js");
-      case "server/chunks/ssr/node_modules_next_dist_client_components_builtin_global-error_0q-w892.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/ssr/node_modules_next_dist_client_components_builtin_global-error_0q-w892.js");
-      case "server/chunks/[root-of-the-server]__0l3yhx4._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/[root-of-the-server]__0l3yhx4._.js");
-      case "server/chunks/[root-of-the-server]__0xkbc3p._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/[root-of-the-server]__0xkbc3p._.js");
-      case "server/chunks/[turbopack]_runtime.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/[turbopack]_runtime.js");
-      case "server/chunks/_next-internal_server_app_api_cloudadapter_d1_route_actions_18-p3og.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/_next-internal_server_app_api_cloudadapter_d1_route_actions_18-p3og.js");
-      case "server/chunks/[externals]__0l8ei7u._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/[externals]__0l8ei7u._.js");
-      case "server/chunks/_0uxp3uh._.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/_0uxp3uh._.js");
-      case "server/chunks/_next-internal_server_app_favicon_ico_route_actions_0g2jjls.js": return require("/home/gart/Desktop/Programming/nextjs/gart/.open-next/server-functions/default/.next/server/chunks/_next-internal_server_app_favicon_ico_route_actions_0g2jjls.js");
-      default:
-        throw new Error(`Not found ${chunkPath}`);
-    }
-  }
-
-
-  async function loadWasmChunk(chunkPath) {
-    switch (chunkPath) {
-
-      default:
-        throw new Error(`Unknown wasm chunk: ${chunkPath}`);
-    }
-  }
