@@ -14,12 +14,12 @@ export default function PortfolioSection() {
     {
       title: "DaveMod — AI Moderator & Deteksi Penipuan Digital",
       date: "2026", // Silakan sesuaikan dengan tanggal rilis spesifik
-      description: "Aplikasi web asisten moderasi pesan berbasis neural network yang berjalan 100% client-side di browser untuk mendeteksi potensi penipuan digital secara instan dan aman.",
+      description: "Aplikasi web asisten moderasi pesan berbasis neural network yang berjalan 100% client-side di browser untuk mendeteksi potensi penipuan digital secara instan dan aman, model AI DaveMod dilatih dari nol dengan dataset berisi berbagai jenis pesan.",
       thumbnail: "/portofolios/davemod-basis64-com/images/screenshot-001.webp",
       images: [
         {
           title: "Bagian Hero",
-          subtitle: "Pratinjau bagian hero antarmuka deteksi pesan penipuan dengan visualisasi probabilitas AI.",
+          subtitle: "Pratinjau tampilan awal website DaveMod.",
           image: "/portofolios/davemod-basis64-com/images/screenshot-003.webp",
           siteUrl: "https://davemod.basis64.com/"
         },

@@ -31,7 +31,7 @@ export default async function Page() {
         <StarField />
 
         {/* Konten di atas StarField perlu z-10 (atau relative z-10) */}
-        <div className="relative z-50">
+        <div className="relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="justify-center">
               {/* Kartu Utama */}

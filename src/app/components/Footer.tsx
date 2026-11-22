@@ -6,12 +6,11 @@ export default function Footer() {
 
   const navigationLinks = [
     { label: "Profil", href: "#profile" },
-    { label: "Portofolio", href: "#portofolio" },
-    { label: "Tech Stack", href: "#tech-stack" },
-    { label: "Pendidikan", href: "#education" },
-    { label: "Traffic", href: "#traffic" },
     { label: "Prestasi", href: "#achievements" },
-    // { label: "Kontak", href: "#contact" }
+    { label: "Portofolio", href: "#portofolio" },
+    { label: "Pendidikan", href: "#education" },
+    { label: "Tech Stack", href: "#tech-stack" },
+    { label: "Kontak", href: "#contact" }
   ];
 
   return (
