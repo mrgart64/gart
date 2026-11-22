@@ -6,12 +6,38 @@ import "@/styles/stars.scss";
 // Konfigurasi JetBrains Mono
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // Bisa pilih dari 100 sampai 800
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "BASIS-64 Business",
-  description: "Kami menyediakan jasa pembuatan website",
+  title: "GART-64 - Hall of Fame",
+  description: "Website hall of fame atau portofolio si Gabriel",
+  icons: {
+    icon: "/favicon.ico",
+  },
+  // --- KONFIGURASI THUMBNAIL (Open Graph & Twitter) ---
+  openGraph: {
+    title: "GART-64 - Hall of Fame",
+    description: "Website hall of fame atau portofolio si Gabriel",
+    url: "https://gart.basis64.com", // Ganti dengan URL Cloudflare Pages kamu
+    siteName: "GART-64",
+    images: [
+      {
+        url: "/og-image.png", // Path ke file thumbnail di folder public/
+        width: 1200,
+        height: 630,
+        alt: "Gart-64 Hall of Fame Preview",
+      },
+    ],
+    locale: "id_ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image", // Menampilkan thumbnail ukuran besar di Twitter/X
+    title: "GART-64 - Hall of Fame",
+    description: "Website hall of fame atau portofolio si Gabriel",
+    images: ["https://gart.basis64.com/og-image.png"],
+  },
 };
 
 export default function RootLayout({
@@ -21,7 +47,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      {/* Terapkan className langsung ke body */}
       <body className={`${jetbrainsMono.className} antialiased`}>
         <div id="stars" />
         <div id="stars2" />

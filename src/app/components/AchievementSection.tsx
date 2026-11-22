@@ -2,12 +2,9 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Trophy, Award, GraduationCap, Calendar, MapPin, ArrowUpRight, X } from 'lucide-react';
-import PortfolioGalleryModal from './PortfolioGalleryModal';
+import { Trophy, Award, GraduationCap, Calendar, MapPin, ArrowUpRight } from 'lucide-react';
 import GalleryModal from './GalleryModal';
 
-
-// 1. Definisikan interface item galeri yang sesuai dengan kebutuhan GalleryModal
 interface GalleryItem {
     title: string;
     subtitle: string;
@@ -23,7 +20,7 @@ interface Achievement {
     location?: string;
     description: string;
     thumbnail: string;
-    images?: GalleryItem[]; // Kumpulan foto/sertifikat buat modal
+    images?: GalleryItem[];
 }
 
 interface EducationGroup {
@@ -48,7 +45,7 @@ export default function AchievementSection() {
                     level: "Nasional",
                     location: "PPSDM Kemendikdasmen",
                     description: "Meraih penghargaan Medallion of Excellence dengan menempati peringkat 10 besar dari 24 peserta di tingkat nasional.",
-                    thumbnail: "/achievements/lksn-cloud-2025/thumbnail.webp", // Sesuaikan path gambar
+                    thumbnail: "/achievements/lksn-cloud-2025/thumbnail.webp",
                     images: [
                         {
                             title: "Sertifikat MoE",
@@ -71,7 +68,7 @@ export default function AchievementSection() {
                     level: "Provinsi",
                     location: "SMKN Negeri 7 Samarinda",
                     description: "Meraih juara 1 dari 4 peserta di tingkat provinsi. Menunjukkan kompetensi unggul dalam mengelola arsitektur cloud.",
-                    thumbnail: "/achievements/lksp-cloud-2025/thumbnail.webp", // Sesuaikan path gambar
+                    thumbnail: "/achievements/lksp-cloud-2025/thumbnail.webp",
                     images: [
                         {
                             title: "Sertifikat Juara 1",
@@ -87,16 +84,6 @@ export default function AchievementSection() {
                         }
                     ]
                 },
-                // {
-                //     title: "Juara 1 LKS Kota Cloud Computing 2025",
-                //     event: "MKKS SMK",
-                //     year: "2025",
-                //     level: "Kota",
-                //     location: "Politeknik",
-                //     description: "Meraih juara 1 dari 3 peserta di tingkat kota.",
-                //     thumbnail: "/achievements/lksp-cloud-2025.webp", // Sesuaikan path gambar
-                //     images: ["/achievements/lksp-cloud-2025.webp"]
-                // },
                 {
                     title: "Juara 1 Lomba Cerdas Cermat Mikrotik Fest 2024",
                     event: "Universitas Mulawarman",
@@ -104,7 +91,7 @@ export default function AchievementSection() {
                     level: "Kota",
                     location: "HIMAPKOM FKIP UNMUL",
                     description: "Meraih juara 1 dari 3 peserta di lomba cerdas cermat Mikrotik Fest 2024 di Universitas Mulawarman.",
-                    thumbnail: "/achievements/mikrotik-fest-2024/thumbnail.webp", // Sesuaikan path gambar
+                    thumbnail: "/achievements/mikrotik-fest-2024/thumbnail.webp",
                     images: [
                         {
                             title: "Sertifikat Juara 1",
@@ -141,23 +128,25 @@ export default function AchievementSection() {
             <GalleryModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
-                galleryItems={selectedAchievement?.images || []} />
+                galleryItems={selectedAchievement?.images || []}
+            />
+
             <section
                 id="achievements"
-                className="relative max-w-7xl mx-4 xl:mx-auto p-6 md:p-12 bg-white/5 backdrop-blur-[1px] border border-white/10 rounded-3xl overflow-hidden shadow-xl shadow-red-500/5 mt-6"
+                className="relative max-w-7xl mx-4 xl:mx-auto py-12 md:py-16 px-2 md:px-4"
             >
                 {/* Header Utama Section */}
                 <div className="text-center max-w-2xl mx-auto space-y-4 mb-12">
-                    <span className="inline-flex items-center gap-2 px-3 py-1 bg-red-500/10 border border-red-500/20 rounded-md text-xs font-mono uppercase tracking-wider text-red-500">
+                    <span className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 border border-red-200 text-xs font-mono font-bold uppercase tracking-wider text-red-600">
                         <Trophy className="w-3.5 h-3.5" />
                         Penghargaan & Prestasi
                     </span>
 
-                    <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                    <h2 className="text-3xl sm:text-4xl font-bold text-neutral-950 tracking-tight">
                         Pencapaian Akademik & Non-Akademik
                     </h2>
 
-                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                    <p className="text-sm sm:text-base font-medium text-neutral-700 leading-relaxed">
                         Berikut adalah rekam jejak kompetisi dan penghargaan yang berhasil saya raih selama menempuh pendidikan.
                     </p>
                 </div>
@@ -168,15 +157,17 @@ export default function AchievementSection() {
                         <div key={eduIdx} className="space-y-6">
 
                             {/* Sub-Header Jenjang Pendidikan */}
-                            <div className="flex items-center gap-3 border-b border-white/10 pb-3">
-                                <div className="p-2 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400">
+                            <div className="flex items-center gap-3 border-b border-neutral-300 pb-3">
+                                <div className="p-2 bg-neutral-100 border border-neutral-300 text-neutral-900">
                                     <GraduationCap className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-white">
+                                    <h3 className="text-lg sm:text-xl font-bold text-neutral-950">
                                         {edu.levelName}
                                     </h3>
-                                    <p className="text-xs sm:text-sm text-gray-300">{edu.schoolName}</p>
+                                    <p className="text-xs sm:text-sm font-medium text-neutral-700">
+                                        {edu.schoolName}
+                                    </p>
                                 </div>
                             </div>
 
@@ -185,10 +176,10 @@ export default function AchievementSection() {
                                 {edu.achievements.map((item, achievementIdx) => (
                                     <div
                                         key={achievementIdx}
-                                        className="group flex flex-col bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden shadow-sm hover:border-red-500/30 hover:shadow-lg hover:shadow-red-500/5 transition-all duration-300"
+                                        className="group flex flex-col bg-white border border-neutral-300 overflow-hidden hover:border-neutral-400 transition-all duration-300"
                                     >
-                                        {/* Thumbnail Gambar Prestasi */}
-                                        <div className="relative aspect-video w-full overflow-hidden bg-black/40 border-b border-white/10">
+                                        {/* Thumbnail Gambar Prestasi Tanpa Bingkai */}
+                                        <div className="relative aspect-video w-full overflow-hidden">
                                             <Image
                                                 src={item.thumbnail}
                                                 alt={item.title}
@@ -203,11 +194,11 @@ export default function AchievementSection() {
                                             <div className="space-y-4 flex-1">
                                                 {/* Badge Level & Tahun */}
                                                 <div className="flex items-center justify-between gap-2">
-                                                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-red-400 text-xs font-semibold">
-                                                        <Award className="w-3.5 h-3.5" />
+                                                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-neutral-100 border border-neutral-300 text-neutral-900 text-xs font-bold">
+                                                        <Award className="w-3.5 h-3.5 text-red-600" />
                                                         {item.level}
                                                     </span>
-                                                    <span className="inline-flex items-center gap-1 text-xs text-gray-300 font-mono">
+                                                    <span className="inline-flex items-center gap-1 text-xs text-neutral-700 font-mono font-semibold">
                                                         <Calendar className="w-3.5 h-3.5" />
                                                         {item.year}
                                                     </span>
@@ -215,32 +206,32 @@ export default function AchievementSection() {
 
                                                 {/* Judul & Event */}
                                                 <div>
-                                                    <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-red-400 transition-colors duration-200">
+                                                    <h4 className="text-base sm:text-lg font-bold text-neutral-950 group-hover:text-red-600 transition-colors duration-200">
                                                         {item.title}
                                                     </h4>
-                                                    <p className="text-xs font-semibold text-gray-300 mt-1">
+                                                    <p className="text-xs font-bold text-neutral-700 mt-1">
                                                         {item.event}
                                                     </p>
                                                 </div>
 
                                                 {/* Deskripsi */}
-                                                <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                                                <p className="text-xs sm:text-sm font-medium text-neutral-700 leading-relaxed">
                                                     {item.description}
                                                 </p>
                                             </div>
 
-                                            {/* Footer Card: Lokasi & Tombol */}
-                                            <div className="pt-4 mt-4 border-t border-white/10 space-y-4">
+                                            {/* Footer Card: Lokasi & Tombol CTA */}
+                                            <div className="pt-4 mt-4 border-t border-neutral-300 space-y-4">
                                                 {item.location && (
-                                                    <div className="flex items-center gap-1.5 text-xs text-gray-300">
-                                                        <MapPin className="w-3.5 h-3.5 text-red-400" />
+                                                    <div className="flex items-center gap-1.5 text-xs font-medium text-neutral-700">
+                                                        <MapPin className="w-3.5 h-3.5 text-red-600 flex-shrink-0" />
                                                         <span>{item.location}</span>
                                                     </div>
                                                 )}
 
                                                 <button
-                                                    onClick={() => { setShowModal(true); setSelectedAchievement(item) }}
-                                                    className="cursor-pointer inline-flex items-center justify-center gap-1.5 w-full px-4 py-2.5 bg-white/5 hover:bg-red-500 border border-white/10 hover:border-red-600 text-gray-200 hover:text-white font-semibold text-xs rounded-xl transition-all duration-300 active:scale-95 group/btn shadow-sm"
+                                                    onClick={() => { setShowModal(true); setSelectedAchievement(item); }}
+                                                    className="cursor-pointer inline-flex items-center justify-center gap-1.5 w-full px-4 py-2.5 bg-red-500 hover:bg-red-600 border border-red-600 text-white font-semibold text-xs transition-all duration-300 active:scale-95 group/btn"
                                                 >
                                                     <span>Lihat Selengkapnya</span>
                                                     <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -255,8 +246,6 @@ export default function AchievementSection() {
                     ))}
                 </div>
             </section>
-
-
         </>
     );
 }

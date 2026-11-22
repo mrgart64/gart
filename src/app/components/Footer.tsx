@@ -15,16 +15,13 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative max-w-7xl mx-4 xl:mx-auto mt-12 bg-white/5 backdrop-blur-[1px] border-t border-x border-white/10 rounded-t-3xl overflow-hidden shadow-xl shadow-red-500/5">
-      {/* Glow Merah Samar di Belakang Footer */}
-      {/* <div className="absolute -inset-0.5 bg-gradient-to-r from-red-500/10 via-transparent to-red-500/5 rounded-t-3xl blur-xl -z-10 pointer-events-none" /> */}
-
+    <footer className="relative max-w-7xl mx-4 xl:mx-auto mt-12 bg-white border-t border-x border-neutral-300 overflow-hidden">
       {/* Konten Utama Footer */}
       <div className="p-6 md:p-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
 
         {/* KOLOM KIRI: Logo & Identitas */}
         <div className="md:col-span-6 flex items-center gap-4">
-          <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center p-1 bg-white/5 border border-white/10 rounded-2xl">
+          <div className="relative flex-shrink-0 w-14 h-14 flex items-center justify-center overflow-hidden">
             <Image
               src="/images/logo.webp"
               alt="Logo BASIS-64"
@@ -36,10 +33,10 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col">
-            <span className="text-xl font-extrabold text-white tracking-wider leading-none uppercase">
+            <span className="text-xl font-extrabold text-neutral-950 tracking-wider leading-none uppercase">
               BASIS-64
             </span>
-            <span className="text-[10px] font-bold text-red-400 tracking-[0.15em] uppercase mt-1 leading-none">
+            <span className="text-[10px] font-bold text-red-600 tracking-[0.15em] uppercase mt-1 leading-none">
               BUSINESS & DEVELOPMENT
             </span>
           </div>
@@ -51,7 +48,7 @@ export default function Footer() {
             <Link
               key={index}
               href={link.href}
-              className="text-xs sm:text-sm font-medium text-gray-300 hover:text-red-400 transition-colors duration-200"
+              className="text-xs sm:text-sm font-bold text-neutral-700 hover:text-red-600 transition-colors duration-200"
             >
               {link.label}
             </Link>
@@ -61,15 +58,14 @@ export default function Footer() {
       </div>
 
       {/* Baris Hak Cipta (Copyright Bar) */}
-      <div className="border-t border-white/10 bg-black/30 backdrop-blur-xs px-6 md:px-12 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-        <p className="text-[11px] text-gray-300 text-center sm:text-left">
-          &copy; {currentYear} <span className="font-semibold text-white">BASIS-64</span>. Hak Cipta Dilindungi.
+      <div className="border-t border-neutral-300 bg-neutral-50 px-6 md:px-12 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <p className="text-[11px] font-medium text-neutral-700 text-center sm:text-left">
+          &copy; {currentYear} <span className="font-bold text-neutral-950">BASIS-64</span>. Hak Cipta Dilindungi.
         </p>
-        <p className="text-[11px] text-gray-300">
+        <p className="text-[11px] font-medium text-neutral-700">
           Built with Next.js & Tailwind CSS
         </p>
       </div>
-
     </footer>
   );
 }

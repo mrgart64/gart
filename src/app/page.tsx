@@ -1,7 +1,6 @@
 // export const runtime = 'edge';
 
 import React from 'react';
-import { D1Database } from '@cloudflare/workers-types';
 
 import Navbar from '@/components/Navbar';
 import HeroSection from './components/HeroSection';
@@ -17,98 +16,48 @@ import Footer from './components/Footer';
 import CloudAdapter from '@/utils/CloudAdapter';
 import StarField from '@/components/StarField';
 import AchievementSection from './components/AchievementSection';
+import Divider from './components/Divider';
 
-// Interface untuk tipe data outputnya
-interface TrafficData {
-  label: string;
-  value: number;
-}
-
-// Interface internal untuk hasil query SQL
-interface RawQueryResult {
-  tanggal: string;
-  total: number;
-}
-
-async function getTrafficData(): Promise<TrafficData[]> {
-  const query = `
-  SELECT 
-    date(created_at, '+8 hours') AS tanggal,
-    COUNT(*) AS total
-  FROM gart_basis64_com
-  WHERE created_at >= datetime('now', '+8 hours', '-6 days', 'start of day', '-8 hours')
-  GROUP BY tanggal;
-`;
-  // 1. Fetch data via CloudAdapter (Otomatis D1 di Production, SQLite di Lokal)
-  const results = await CloudAdapter.D1<RawQueryResult>(query) || [];
-
-  console.log(results)
-
-  // 2. Map data DB ke Object JavaScript { "YYYY-MM-DD": total }
-  const dataMap = new Map<string, number>();
-  results.forEach((row) => dataMap.set(row.tanggal, row.total));
-
-  // 3. Generate Array TrafficData (H-6 sampai Hari Ini)
-  const trafficData: TrafficData[] = [];
-  const now = new Date();
-
-  for (let i = 6; i >= 0; i--) {
-    const d = new Date(now);
-    d.setDate(d.getDate() - i);
-
-    // Format ISO untuk pencocokan key Map: "YYYY-MM-DD"
-    const dateKey = d.toISOString().split('T')[0];
-
-    // Format label untuk tampilan UI: "DD MMM" (Contoh: "04 Jan", "23 Jul")
-    const label = d.toLocaleDateString('en-GB', {
-      day: '2-digit',
-      month: 'short',
-    });
-
-    trafficData.push({
-      label: label, // e.g. "04 Jan"
-      value: dataMap.get(dateKey) || 0, // Nilai total dari D1 (default 0 jika tidak ada data)
-    });
-  }
-
-  return trafficData;
-}
-
-async function putTraffic() {
-  // Insert 1 row dengan waktu saat ini
-  // await CloudAdapter.D1("INSERT INTO gart_basis64_com (created_at) VALUES (datetime('now'));");
-}
-
-export default async function TestingPage() {
+export default async function Page() {
   // await putTraffic();
   // const analyticsData = await getTrafficData();
 
   return (
-    <>
-      <StarField />
+    <main className="min-h-screen w-full">
       <Navbar />
 
-      <div className='max-w-7xl mx-auto'>
-        {/* <PortfolioGalleryModal isOpen={true} /> */}
-        {/* <ImageViewerModal isOpen={true}/> */}
-        <div className="justify-center">
+      {/* AREA HERO: StarField dikunci di dalam container ini saja */}
+      <section className="relative overflow-hidden text-white">
+        <StarField />
 
-          {/* Kartu Utama */}
-          <HeroSection trafficData={[]} />
+        {/* Konten di atas StarField perlu z-10 (atau relative z-10) */}
+        <div className="relative z-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="justify-center">
+              {/* Kartu Utama */}
+              <HeroSection />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BAGIAN LAIN: Full-width background putih */}
+      <div className="relative z-10 w-full bg-white text-slate-900">
+        <div className="max-w-7xl mx-auto">
           {/* <ServicesSection /> */}
-          <PortfolioSection />
-          <FeaturesSection />
-          <EducationSection />
           <AchievementSection />
+          <Divider />
+          <PortfolioSection />
+          <Divider />
+          <EducationSection />
+          <Divider />
+          <FeaturesSection />
+
           {/* <TrafficSection trafficData={analyticsData} /> */}
-
           <ContactSection />
-
           <Footer />
-
         </div>
       </div>
-    </>
-
+    </main>
   );
 }
