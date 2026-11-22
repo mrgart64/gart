@@ -13,7 +13,7 @@ export default function PortfolioSection() {
   const allProjects = [
     {
       title: "DaveMod — AI Moderator & Deteksi Penipuan Digital",
-      date: "2026", // Silakan sesuaikan dengan tanggal rilis spesifik
+      date: "10 November 2026", // Silakan sesuaikan dengan tanggal rilis spesifik
       description: "Aplikasi web asisten moderasi pesan berbasis neural network yang berjalan 100% client-side di browser untuk mendeteksi potensi penipuan digital secara instan dan aman, model AI DaveMod dilatih dari nol dengan dataset berisi berbagai jenis pesan.",
       thumbnail: "/portofolios/davemod-basis64-com/images/screenshot-001.webp",
       images: [
