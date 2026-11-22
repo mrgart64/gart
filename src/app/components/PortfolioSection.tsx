@@ -170,7 +170,7 @@ export default function PortfolioSection() {
                     {/* 5. Tombol CTA Lihat Selengkapnya */}
                     <button
                       onClick={() => buttonHandler(project)}
-                      className="cursor-pointer inline-flex items-center justify-center gap-1.5 w-full px-4 py-2.5 bg-red-500 hover:bg-red-600 border border-red-600 text-white font-semibold text-xs transition-all duration-300 active:scale-95 group/btn"
+                      className="cursor-pointer inline-flex items-center justify-center gap-1.5 w-full px-4 py-2.5 bg-red-600 hover:bg-red-700 border border-red-700 text-white font-semibold text-xs transition-all duration-300 active:scale-95 group/btn"
                     >
                       <span>Lihat Selengkapnya</span>
                       <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -189,7 +189,7 @@ export default function PortfolioSection() {
           <div className="flex justify-center pt-12 mt-4 border-t border-neutral-300">
             <button
               onClick={() => setShowAll(!showAll)}
-              className="cursor-pointer inline-flex items-center gap-2 px-6 py-3 bg-red-500 hover:bg-red-600 border border-red-600 text-white font-semibold text-sm transition-all active:scale-95"
+              className="cursor-pointer inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 border border-red-700 text-white font-semibold text-sm transition-all active:scale-95"
             >
               <span>{showAll ? 'Sembunyikan Portofolio' : 'Lihat Lebih Banyak'}</span>
               {showAll ? (

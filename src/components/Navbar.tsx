@@ -115,7 +115,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 className={`flex items-center gap-2 px-5 py-2 text-xs font-bold text-white transition-all active:scale-95 ${isScrolled
-                  ? 'bg-red-500 hover:bg-red-600 border border-red-700'
+                  ? 'bg-red-600 hover:bg-red-600 border border-red-700'
                   : 'bg-red-600/70 border border-red-500/90 hover:scale-105 shadow-lg shadow-red-500/20'
                   }`}
               >
@@ -151,7 +151,7 @@ export default function Navbar() {
               exit={{ opacity: 0, y: -20 }}
               className={`md:hidden mt-2 p-4 flex flex-col gap-2 transition-colors ${isScrolled
                 ? 'bg-white border border-neutral-300 text-neutral-950 shadow-md'
-                : 'bg-neutral-950/80 border border-white/10 backdrop-blur-2xl rounded-2xl text-white'
+                : 'bg-neutral-950/10 border border-white/10 backdrop-blur-2xl text-white'
                 }`}
             >
               {navLinks.map((link) => (
@@ -160,7 +160,7 @@ export default function Navbar() {
                   href={link.href}
                   className={`flex items-center gap-3 p-3 text-sm font-medium transition-all ${isScrolled
                     ? 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 font-bold'
-                    : 'text-neutral-300 hover:text-white hover:bg-white/5 rounded-xl'
+                    : 'text-neutral-300 hover:text-white hover:bg-white/5'
                     }`}
                   onClick={() => setIsOpen(false)}
                 >
@@ -175,8 +175,8 @@ export default function Navbar() {
                 <a
                   href="#contact"
                   className={`flex items-center justify-center gap-2 w-full py-3 text-white font-bold text-xs tracking-wider uppercase transition-all active:scale-95 ${isScrolled
-                    ? 'bg-red-500 hover:bg-red-600 border border-red-700'
-                    : 'bg-red-700/70 border border-red-500/90 rounded-xl shadow-md shadow-blue-600/20'
+                    ? 'bg-red-600 hover:bg-red-600 border border-red-700'
+                    : 'bg-red-600/70 border border-red-500/90 hover:scale-105 shadow-lg shadow-red-500/20'
                     }`}
                   onClick={() => setIsOpen(false)}
                 >

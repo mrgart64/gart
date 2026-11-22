@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "GART-64",
     images: [
       {
-        url: "/og-image.png", // Path ke file thumbnail di folder public/
+        url: "/og-image.jpg", // Path ke file thumbnail di folder public/
         width: 1200,
         height: 630,
         alt: "Gart-64 Hall of Fame Preview",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image", // Menampilkan thumbnail ukuran besar di Twitter/X
     title: "GART-64 - Hall of Fame",
     description: "Website hall of fame atau portofolio si Gabriel",
-    images: ["https://gart.basis64.com/og-image.png"],
+    images: ["https://gart.basis64.com/og-image.jpg"],
   },
 };
 

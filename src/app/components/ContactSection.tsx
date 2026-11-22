@@ -1,6 +1,6 @@
 'use client';
 
-import { MessageSquare, Mail, CameraIcon, ArrowUpRight } from 'lucide-react';
+import { MessageSquare, Mail, CameraIcon, ArrowUpRight, PhoneCall, Phone } from 'lucide-react';
 
 export default function ContactSection() {
   const contacts = [
@@ -9,8 +9,8 @@ export default function ContactSection() {
       value: "+62 822-1150-9216 (Gabriel)",
       label: "Respons cepat (08:00 - 21:00 WITA)",
       href: "https://wa.me/6282211509216",
-      icon: MessageSquare,
-      iconClass: "text-emerald-700 bg-emerald-50 border-emerald-200 group-hover:bg-red-500 group-hover:border-red-600 group-hover:text-white"
+      icon: Phone,
+      iconClass: "text-emerald-700 bg-emerald-50 border-emerald-200 group-hover:bg-red-600 group-hover:border-red-600 group-hover:text-white"
     },
     {
       name: "Instagram",
@@ -18,8 +18,8 @@ export default function ContactSection() {
       label: "Ikuti portofolio & aktivitas terbaru",
       href: "https://instagram.com/mrgart64",
       icon: CameraIcon,
-      iconClass:
-        "text-pink-700 bg-pink-50 border-pink-300 group-hover:bg-gradient-to-tr group-hover:from-amber-400 group-hover:via-pink-600 group-hover:to-purple-600 group-hover:border-pink-700 group-hover:text-white",
+      iconClass: "text-pink-700 bg-pink-50 border-pink-200 group-hover:bg-red-600 group-hover:border-red-600 group-hover:text-white"
+
     },
     {
       name: "Official Email",
@@ -27,7 +27,7 @@ export default function ContactSection() {
       label: "Kirim pesan ke email resmi BASIS-64",
       href: "mailto:official@basis64.com",
       icon: Mail,
-      iconClass: "text-red-600 bg-red-50 border-red-200 group-hover:bg-red-500 group-hover:border-red-600 group-hover:text-white"
+      iconClass: "text-red-600 bg-red-50 border-red-200 group-hover:bg-red-600 group-hover:border-red-600 group-hover:text-white"
     }
   ];
 

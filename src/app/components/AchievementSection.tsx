@@ -231,7 +231,7 @@ export default function AchievementSection() {
 
                                                 <button
                                                     onClick={() => { setShowModal(true); setSelectedAchievement(item); }}
-                                                    className="cursor-pointer inline-flex items-center justify-center gap-1.5 w-full px-4 py-2.5 bg-red-500 hover:bg-red-600 border border-red-600 text-white font-semibold text-xs transition-all duration-300 active:scale-95 group/btn"
+                                                    className="cursor-pointer inline-flex items-center justify-center gap-1.5 w-full px-4 py-2.5 bg-red-600 hover:bg-red-700 border border-red-700 text-white font-semibold text-xs transition-all duration-300 active:scale-95 group/btn"
                                                 >
                                                     <span>Lihat Selengkapnya</span>
                                                     <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />

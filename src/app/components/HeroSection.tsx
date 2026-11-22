@@ -52,8 +52,8 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               className="flex justify-center sm:justify-start items-center gap-2 mb-6"
             >
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-neutral-400/10 border border-neutral-200/40 text-neutral-200 text-xs font-mono uppercase tracking-wider">
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+              <span className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-400/10 border border-neutral-200/40 text-neutral-200 text-xs font-mono uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                 Full Stack JavaScript Developer • My Profile
               </span>
             </motion.div>
@@ -71,7 +71,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25 }}
-              className="text-sm sm:text-base font-mono text-red-400 uppercase tracking-wider mb-5"
+              className="text-sm sm:text-base font-mono text-red-500 uppercase tracking-wider mb-5"
             >
               Full Stack JS Engineer • Frontend & Backend Web Development
             </motion.p>
