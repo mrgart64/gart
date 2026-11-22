@@ -54,7 +54,7 @@ export default function HeroSection() {
             >
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-neutral-400/10 border border-neutral-200/40 text-neutral-200 text-xs font-mono uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                Full Stack JavaScript Developer • Curriculum Vitae
+                Full Stack JavaScript Developer • My Profile
               </span>
             </motion.div>
 
